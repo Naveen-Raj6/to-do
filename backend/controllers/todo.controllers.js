@@ -4,7 +4,7 @@ import {
     createTodo,
     updateTodo,
     deleteTodo
-} from "../models/todo.model";
+} from "../models/todo.model.js";
 
 export const fetchTodos = (req, res) => {
     getAllTodos((err, todos) => {
