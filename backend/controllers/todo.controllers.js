@@ -37,6 +37,10 @@ export const addTodo = (req, res) => {
 export const modifyTodo = (req, res) => {
     const { id } = req.params;
     const { task, completed } = req.body;
+    console.log('Received update payload:', req.body); // Debug log
+    if (task === undefined || task === null || task.trim() === "") {
+        return res.status(400).json({ error: "Task is required and cannot be empty" });
+    }
     updateTodo(id, task, completed, (err, result) => {
         if (err) return res.status(500).json({ error: err.message });
         res.status(200).json({ message: "Todo updated successfully" })
